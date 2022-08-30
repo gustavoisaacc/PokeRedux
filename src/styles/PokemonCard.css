@@ -1,0 +1,23 @@
+.Pokemon--card{
+    border: 1px solid #e1e1e1;
+    margin-top: 3rem;
+}
+.Pokemon--card img {
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.Pokemon--title{
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.ul{
+    margin-left: 25px;
+    text-align: justify;
+}
