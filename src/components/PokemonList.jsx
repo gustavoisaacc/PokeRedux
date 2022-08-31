@@ -4,7 +4,6 @@ import PokemonCard from './PokemonCard'
 import '../styles/PokemonList.css'
 
 function PokemonList({pokemons = []}) {
-  console.log(pokemons)
   return (
     <div className='Pokemon__content'>
         <div className="Pokemon--grid">

@@ -5,6 +5,8 @@ import '../styles/PokemonCard.css'
 
 
 function PokemonCard({item}) {
+  const type = item.types.map(item => item.type.name).join(', ')
+  console.log(type)
   return (
     <div className='Pokemon--card'>
         <img src={item.sprites.front_default} alt={item.name} />
@@ -14,7 +16,7 @@ function PokemonCard({item}) {
                 <span><StarOutlined/></span>
             </div>
             <ul className="ul">
-                <li>poderes</li>
+                <li>{type}</li>
             </ul>
         </div>
     </div>

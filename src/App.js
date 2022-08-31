@@ -1,10 +1,11 @@
 import { useEffect} from 'react';
 import {getPolkemon} from './api';
 import PokemonList from './components/PokemonList';
-import {getPokemonsWithDetails} from './actions'
+import {getPokemonsWithDetails, setLoading} from './actions'
 import { useDispatch, useSelector } from 'react-redux';
 // import { connect } from 'react-redux';
 
+import Spinner from './components/Spiner';
 import Searcher from './components/Searcher';
 
 import './App.css';
@@ -12,23 +13,26 @@ import './App.css';
 // {pokemons, setPokemons} pasar por props
 function App() {
 
-  const pokemons = useSelector(state =>{ 
-    console.log(state)
-    return state.pokemons 
-  })
+  const pokemons = useSelector(state => state.pokemons )
+  const loading = useSelector( state => state.loading)
   const dispatch = useDispatch()
-
+  
   useEffect (() => {
     const fetchPokemon = async () => {
+      dispatch(setLoading(true))
       const pokemonRes = await getPolkemon()
       dispatch(getPokemonsWithDetails(pokemonRes))
+      dispatch(setLoading(false))
     }
     fetchPokemon()
   }, [])
   return (
     <div className="App">
       <Searcher/>
-      <PokemonList pokemons={pokemons}/>
+      { loading
+        ? <Spinner/>
+        : <PokemonList pokemons={pokemons}/> 
+      }
     </div>
   );
 
